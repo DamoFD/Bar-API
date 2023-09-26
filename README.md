@@ -22,10 +22,10 @@ This is the documentation for the Bar API.
     Content-Type: application/json
 
     {
-        "token_type": "Bearer",
-        "expires_in": 31622400,
-        "access_token": "fea6fd89safdsjalfdsa.fds659424jlkr679fdsjkl32y7fdskls.fjge9wghslrjeklfsd",
-        "refresh_token": "fdsa695432h89dsaf.354u89gy7a532.f8e392q563fkdlsa.532ryu8ew9fy32l45j3"
+        "token_type": "Bearer", (string)
+        "expires_in": 31622400, (int)
+        "access_token": "fea6fd89safdsjalfdsa.fds659424jlkr679fdsjkl32y7fdskls.fjge9wghslrjeklfsd", (string)
+        "refresh_token": "fdsa695432h89dsaf.354u89gy7a532.f8e392q563fkdlsa.532ryu8ew9fy32l45j3" (string)
     }
 
 ### Token Exchange Example
@@ -51,9 +51,14 @@ This is the documentation for the Bar API.
     print(response.json())
 
 ## Base URL
+
 The base URL for the API is:
 
 `https://barapi.cloud/api/v1/`
+
+## Headers
+
+All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 
 ## Get Your User Information
 
@@ -61,18 +66,32 @@ The base URL for the API is:
 
 `GET /user/`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
-
 ### Response
 
     HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
     Status: 200 OK
-    Connection: close
     Content-Type: application/json
-    Content-Length: 2
 
-    []
+    {
+        "id": "1", (string)
+        "email": "john@doe.com", (string)
+        "email_verified_at": "2020-07-25T03:09:16.000000Z", (?string)(date-time)
+        "created_at": "2020-07-25T03:09:16.000000Z", (string)(date-time)
+        "updated_at": "2020-07-25T03:09:16.000000Z" (string)(date-time)
+    }
+
+### Token Exchange Example
+    import requests
+
+    url = 'https://barapi.cloud/api/v1/user'
+
+    headers = {
+        'Authorization': f'Bearer ACCESS_TOKEN',
+    }
+
+    response = requests.get(url, headers=headers)
+
+    print(response.json())
 
 ## Create a new Thing
 
