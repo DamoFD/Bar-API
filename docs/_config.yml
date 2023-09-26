@@ -7,7 +7,7 @@ permalink:        pretty
 
 # Setup
 title:            Bar API
-tagline:          'A Jekyll theme'
+tagline:          'Rest API for sharing music'
 description:      'Bar API is a RESTful API that allows users to share music with one another with their front-ends.'
 url:              https://damofd.github.io
 baseurl:          /Bar-API/

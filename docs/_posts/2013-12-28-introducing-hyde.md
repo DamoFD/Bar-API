@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Introducing Hyde
+title: Introducing Bar API
 ---
 
-Hyde is a brazen two-column [Jekyll](http://jekyllrb.com) theme that pairs a prominent sidebar with uncomplicated content. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+Bar API is a Restful API with OAuth functionality that allows users to share music.
 
-### Built on Poole
+### Table of Contents
 
 Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by [@mdo](https://twitter.com/mdo). Poole, and every theme built on it (like Hyde here) includes the following:
 
