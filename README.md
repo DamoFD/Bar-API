@@ -5,7 +5,7 @@ This is the documentation for the Bar API.
 ## Retrieve Your Access Token
 
 ### Request
-`POST https://barapi.cloud/oauth/token`
+`POST https://barapi.cloud/oauth/token/`
 
 ### Data
     grant_type: "password"
@@ -31,7 +31,7 @@ This is the documentation for the Bar API.
 ### Token Exchange Example
     import requests
 
-    API_ENDPOINT = 'https://barapi.cloud/oauth/token'
+    API_ENDPOINT = 'https://barapi.cloud/oauth/token/'
     CLIENT_ID = '332269999912132097'
     CLIENT_SECRET = '937it3ow87i4ery69876wqire'
     USERNAME = 'john@doe.com'
@@ -80,10 +80,10 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
         "updated_at": "2020-07-25T03:09:16.000000Z" (string)(date-time)
     }
 
-### Token Exchange Example
+### Get User Example
     import requests
 
-    url = 'https://barapi.cloud/api/v1/user'
+    url = 'https://barapi.cloud/api/v1/user/'
 
     headers = {
         'Authorization': f'Bearer ACCESS_TOKEN',
@@ -93,25 +93,143 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 
     print(response.json())
 
-## Create a new Thing
+## Fetch All Artists
 
 ### Request
 
-`POST /thing/`
-
-    curl -i -H 'Accept: application/json' -d 'name=Foo&status=new' http://localhost:7000/thing
+`GET /artists/`
 
 ### Response
 
-    HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 201 Created
-    Connection: close
+    HTTP/1.1 200 OK
+    Status: 200 OK
     Content-Type: application/json
-    Location: /thing/1
-    Content-Length: 36
 
-    {"id":1,"name":"Foo","status":"new"}
+    {
+    "data": [
+        {
+            "id": "1", (string)
+            "type": "Artists",
+            "attributes": {
+                "name": "John Doe", (string)
+                "songs": [
+                    {
+                        "id": "2", (string)
+                        "name": "Louvenia Skiles", (string)
+                        "url": "https://boyer.info/ut-aliquam-rerum-facilis-quia.html", (string)
+                        "creator_id": "1", (string)
+                        "created_at": "2023-09-26T04:25:36.000000Z", (string)(date-time)
+                        "updated_at": "2023-09-26T04:25:36.000000Z" (string)(date-time)
+                    },
+                    {
+                        "id": "12",
+                        "name": "Roel Kuphal PhD",
+                        "url": "http://mckenzie.org/",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    }
+                ],
+                "creator_id": "1",
+                "created_at": "2023-09-26T03:41:35.000000Z",
+                "updated_at": "2023-09-26T04:10:05.000000Z"
+            }
+        },
+        {
+            "id": "2",
+            "type": "Artists",
+            "attributes": {
+                "name": "Erwin Cartwright",
+                "songs": [
+                    {
+                        "id": "1",
+                        "name": "Khalil Marquardt",
+                        "url": "http://www.gusikowski.org/molestiae-ex-quo-nobis-quis-eaque-ipsum",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T04:25:36.000000Z",
+                        "updated_at": "2023-09-26T04:25:36.000000Z"
+                    },
+                    {
+                        "id": "7",
+                        "name": "Maritza Bogan",
+                        "url": "https://www.yost.info/voluptas-maxime-autem-quo-neque",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    },
+                    {
+                        "id": "10",
+                        "name": "Dovie Yost DVM",
+                        "url": "http://macejkovic.biz/dolore-ipsa-et-necessitatibus-qui-libero-est.html",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    },
+                    {
+                        "id": "13",
+                        "name": "Katlyn Schowalter",
+                        "url": "http://www.zboncak.com/",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    },
+                    {
+                        "id": "14",
+                        "name": "Lonnie Bogisich",
+                        "url": "https://www.boyle.com/voluptas-iusto-atque-nihil-est-et",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    }
+                ],
+                "creator_id": "1",
+                "created_at": "2023-09-26T03:41:35.000000Z",
+                "updated_at": "2023-09-26T03:41:35.000000Z"
+            }
+        },
+        {
+            "id": "4",
+            "type": "Artists",
+            "attributes": {
+                "name": "Vernice Brekke",
+                "songs": [
+                    {
+                        "id": "9",
+                        "name": "Hope Hansen",
+                        "url": "http://larson.org/",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    },
+                    {
+                        "id": "11",
+                        "name": "Marty Baumbach IV",
+                        "url": "http://green.com/alias-debitis-blanditiis-praesentium-voluptate-et",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    }
+                ],
+                "creator_id": "1",
+                "created_at": "2023-09-26T03:41:35.000000Z",
+                "updated_at": "2023-09-26T03:41:35.000000Z"
+            }
+        }
+    ]
+    }
+
+### Fetch All Artists Example
+    import requests
+
+    url = 'https://barapi.cloud/api/v1/artists/'
+
+    headers = {
+        'Authorization': f'Bearer ACCESS_TOKEN',
+    }
+
+    response = requests.get(url, headers=headers)
+
+    print(response.json())
 
 ## Get a specific Thing
 
