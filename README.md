@@ -15,6 +15,41 @@ This is the documentation for the Bar API.
     password: {password}
     scope: ""
 
+### Response
+
+    HTTP/1.1 200 OK
+    STATUS: 200 OK
+    Content-Type: application/json
+
+    {
+        "token_type": "Bearer",
+        "expires_in": 31622400,
+        "access_token": "fea6fd89safdsjalfdsa.fds659424jlkr679fdsjkl32y7fdskls.fjge9wghslrjeklfsd",
+        "refresh_token": "fdsa695432h89dsaf.354u89gy7a532.f8e392q563fkdlsa.532ryu8ew9fy32l45j3"
+    }
+
+### Token Exchange Example
+    import requests
+
+    API_ENDPOINT = 'https://barapi.cloud/oauth/token'
+    CLIENT_ID = '332269999912132097'
+    CLIENT_SECRET = '937it3ow87i4ery69876wqire'
+    USERNAME = 'john@doe.com'
+    PASSWORD = 'mypassword123'
+
+    data = {
+        'client_id': CLIENT_ID,
+        'client_secret': CLIENT_SECRET,
+        'grant_type': 'password',
+        'username': USERNAME,
+        'password': PASSWORD,
+        'scope': ''
+    }
+
+    response = requests.post(url, data=data)
+
+    print(response.json())
+
 ## Base URL
 The base URL for the API is:
 
