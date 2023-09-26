@@ -6,13 +6,14 @@ use App\Http\Requests\StoreSongRequest;
 use App\Http\Requests\UpdateSongRequest;
 use App\Models\Song;
 use App\Http\Resources\SongResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class SongController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
         return SongResource::collection(Song::all());
     }

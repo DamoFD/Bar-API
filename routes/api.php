@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\BarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,5 @@ Route::middleware('auth:api')->prefix('v1')->group(function() {
 
     Route::apiResource('/artists', ArtistController::class);
     Route::apiResource('/songs', SongController::class);
+    Route::apiResource('/bars', BarController::class);
 });

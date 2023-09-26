@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Song>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bar>
  */
-class SongFactory extends Factory
+class BarFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +17,9 @@ class SongFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'url' => $this->faker->url,
+            'title' => $this->faker->name,
+            'content' => $this->faker->sentence,
             'user_id' => 1,
-            'artist_id' => rand(6, 8),
         ];
     }
 }
