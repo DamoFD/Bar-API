@@ -38,7 +38,7 @@ class SongController extends Controller
      */
     public function show(Song $song)
     {
-        //
+        return new SongResource($song);
     }
 
     /**
