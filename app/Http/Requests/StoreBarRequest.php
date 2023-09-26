@@ -11,7 +11,7 @@ class StoreBarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreBarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|unique:bars|max:255',
+            'content' => 'required|max:2000',
         ];
     }
 }

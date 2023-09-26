@@ -29,7 +29,7 @@ class SongController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSongRequest $request)
+    public function store(StoreSongRequest $request): SongResource
     {
         $song = Song::create([
             'name' => $request->input('name'),

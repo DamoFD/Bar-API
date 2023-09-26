@@ -29,9 +29,15 @@ class BarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBarRequest $request)
+    public function store(StoreBarRequest $request): BarResource
     {
-        //
+        $bar = Bar::create([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return new BarResource($bar);
     }
 
     /**

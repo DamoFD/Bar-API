@@ -29,7 +29,7 @@ class ArtistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreArtistRequest $request)
+    public function store(StoreArtistRequest $request): ArtistResource
     {
         $artist = Artist::create([
             'name' => $request->input('name'),
