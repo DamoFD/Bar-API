@@ -2,6 +2,19 @@
 
 This is the documentation for the Bar API.
 
+## Retrieve Your Access Token
+
+### Request
+`POST https://barapi.cloud/oauth/token`
+
+### Data
+`grant_type: "password"
+client_id: {client_id}
+client_secret: {client_secret}
+username: {username}
+password: {password}
+scope: ""`
+
 ## Base URL
 The base URL for the API is:
 
@@ -11,7 +24,7 @@ The base URL for the API is:
 
 ### Request
 
-`GET /thing/`
+`GET /user/`
 
     curl -i -H 'Accept: application/json' http://localhost:7000/thing/
 
