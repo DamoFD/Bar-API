@@ -30,7 +30,14 @@ class SongController extends Controller
      */
     public function store(StoreSongRequest $request)
     {
-        //
+        $song = Song::create([
+            'name' => $request->input('name'),
+            'url' => $request->input('url'),
+            'user_id' => auth()->user()->id,
+            'artist_id' => (int)$request->input('artist_id'),
+        ]);
+
+        return new SongResource($song);
     }
 
     /**
