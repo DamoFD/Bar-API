@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ArtistResource extends JsonResource
+class SongResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,19 +16,17 @@ class ArtistResource extends JsonResource
     {
         return [
             'id' => (string)$this->id,
-            'type' => 'Artists',
+            'type' => 'Songs',
             'attributes' => [
                 'name' => $this->name,
-                'songs' => $this->songs->map(function ($song) {
-                    return [
-                        'id' => (string)$song->id,
-                        'name' => $song->name,
-                        'url' => $song->url,
-                        'creator_id' => (string)$song->user_id,
-                        'created_at' => $song->created_at,
-                        'updated_at' => $song->updated_at,
-                    ];
-                })->all(),
+                'url' => $this->url,
+                'artist' => [
+                    'id' => (string)$this->artist->id,
+                    'name' => $this->artist->name,
+                    'creator_id' => (string)$this->artist->user_id,
+                    'created_at' => $this->created_at,
+                    'updated_at' => $this->updated_at,
+                ],
                 'creator_id' => (string)$this->user_id,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
