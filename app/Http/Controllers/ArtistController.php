@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArtistRequest;
-use App\Http\Requests\UpdateartistRequest;
+use App\Http\Requests\UpdateArtistRequest;
 use App\Models\Artist;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Resources\ArtistResource;
@@ -58,9 +58,13 @@ class ArtistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateartistRequest $request, artist $artist)
+    public function update(UpdateArtistRequest $request, artist $artist)
     {
-        //
+        $artist->update([
+            'name' => $request->input('name'),
+        ]);
+
+        return new ArtistResource($artist);
     }
 
     /**

@@ -4,14 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateartistRequest extends FormRequest
+class UpdateArtistRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        $artist = $this->route('artist');
+
+        return auth()->user()->id === $artist->user_id;
     }
 
     /**
@@ -22,7 +24,7 @@ class UpdateartistRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|unique:artists|max:255'
         ];
     }
 }
