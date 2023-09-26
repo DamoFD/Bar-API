@@ -5,7 +5,7 @@ This is the documentation for the Bar API.
 ## Retrieve Your Access Token
 
 ### Request
-`POST https://barapi.cloud/oauth/token/`
+`POST https://barapi.cloud/oauth/token`
 
 ### Data
     grant_type: "password"
@@ -31,7 +31,7 @@ This is the documentation for the Bar API.
 ### Token Exchange Example
     import requests
 
-    API_ENDPOINT = 'https://barapi.cloud/oauth/token/'
+    API_ENDPOINT = 'https://barapi.cloud/oauth/token'
     CLIENT_ID = '332269999912132097'
     CLIENT_SECRET = '937it3ow87i4ery69876wqire'
     USERNAME = 'john@doe.com'
@@ -64,7 +64,7 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 
 ### Request
 
-`GET /user/`
+`GET /user`
 
 ### Response
 
@@ -83,7 +83,7 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 ### Get User Example
     import requests
 
-    url = 'https://barapi.cloud/api/v1/user/'
+    url = 'https://barapi.cloud/api/v1/user'
 
     headers = {
         'Authorization': f'Bearer ACCESS_TOKEN',
@@ -97,7 +97,7 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 
 ### Request
 
-`GET /artists/`
+`GET /artists`
 
 ### Response
 
@@ -210,9 +210,9 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
                         "updated_at": "2023-09-26T05:24:39.000000Z"
                     }
                 ],
-                "creator_id": "1",
-                "created_at": "2023-09-26T03:41:35.000000Z",
-                "updated_at": "2023-09-26T03:41:35.000000Z"
+                "creator_id": "1", (string)
+                "created_at": "2023-09-26T03:41:35.000000Z", (string)(date-time)
+                "updated_at": "2023-09-26T03:41:35.000000Z" (string)(date-time)
             }
         }
     ]
@@ -221,7 +221,7 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 ### Fetch All Artists Example
     import requests
 
-    url = 'https://barapi.cloud/api/v1/artists/'
+    url = 'https://barapi.cloud/api/v1/artists'
 
     headers = {
         'Authorization': f'Bearer ACCESS_TOKEN',
@@ -231,45 +231,113 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 
     print(response.json())
 
-## Get a specific Thing
+## Fetch Single Artist
 
 ### Request
 
-`GET /thing/id`
-
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/1
+`GET /artists/{id}`
 
 ### Response
 
     HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
     Status: 200 OK
-    Connection: close
     Content-Type: application/json
-    Content-Length: 36
 
-    {"id":1,"name":"Foo","status":"new"}
+    {
+    "data": {
+            "id": "1", (string)
+            "type": "Artists",
+            "attributes": {
+                "name": "John Doe", (string)
+                "songs": [
+                    {
+                        "id": "2", (string)
+                        "name": "Louvenia Skiles", (string)
+                        "url": "https://boyer.info/ut-aliquam-rerum-facilis-quia.html", (string)
+                        "creator_id": "1", (string)
+                        "created_at": "2023-09-26T04:25:36.000000Z", (string)(date-time)
+                        "updated_at": "2023-09-26T04:25:36.000000Z" (string)(date-time)
+                    },
+                    {
+                        "id": "12",
+                        "name": "Roel Kuphal PhD",
+                        "url": "http://mckenzie.org/",
+                        "creator_id": "1",
+                        "created_at": "2023-09-26T05:24:39.000000Z",
+                        "updated_at": "2023-09-26T05:24:39.000000Z"
+                    }
+                ],
+                "creator_id": "1", (string)
+                "created_at": "2023-09-26T03:41:35.000000Z", (string)(date-time)
+                "updated_at": "2023-09-26T04:10:05.000000Z" (string)(date-time)
+            }
+        }
+    }
 
-## Get a non-existent Thing
+### Fetch Single Artist Example
+    import requests
+
+    url = 'https://barapi.cloud/api/v1/artists/1'
+
+    headers = {
+        'Authorization': f'Bearer ACCESS_TOKEN',
+    }
+
+    response = requests.get(url, headers=headers)
+
+    print(response.json())
+
+## Create Artist
 
 ### Request
 
-`GET /thing/id`
+`POST /artists`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/9999
+    {
+    "request": {
+        "method": "POST",
+        "endpoint": "/artists",
+        "body": {
+            "name": "JOHN DOE"
+        }
+    }
 
 ### Response
 
-    HTTP/1.1 404 Not Found
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 404 Not Found
-    Connection: close
+    HTTP/1.1 201 Created
+    Status: 201 Created
     Content-Type: application/json
-    Content-Length: 35
 
-    {"status":404,"reason":"Not found"}
+    {
+    "data": {
+            "id": "1", (string)
+            "type": "Artists",
+            "attributes": {
+                "name": "John Doe", (string)
+                "songs": [],
+                "creator_id": "1", (string)
+                "created_at": "2023-09-26T03:41:35.000000Z", (string)(date-time)
+                "updated_at": "2023-09-26T04:10:05.000000Z" (string)(date-time)
+            }
+        }
+    }
 
-## Create another new Thing
+### Create Artist Example
+    import requests
+
+    url = 'https://barapi.cloud/api/v1/artists'
+
+    headers = {
+        'Authorization': f'Bearer ACCESS_TOKEN',
+    }
+
+    payload = {
+        'name': 'John Doe'
+    }
+
+    response = requests.get(url, headers=headers, json=payload)
+
+    print(response.json())
 
 ### Request
 
