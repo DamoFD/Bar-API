@@ -8,12 +8,12 @@ This is the documentation for the Bar API.
 `POST https://barapi.cloud/oauth/token`
 
 ### Data
-`grant_type: "password"
-client_id: {client_id}
-client_secret: {client_secret}
-username: {username}
-password: {password}
-scope: ""`
+    grant_type: "password"
+    client_id: {client_id}
+    client_secret: {client_secret}
+    username: {username}
+    password: {password}
+    scope: ""
 
 ## Base URL
 The base URL for the API is:
