@@ -11,7 +11,9 @@ class UpdateSongRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $song = $this->route('song');
+
+        return auth()->user()->id === $song->user_id;
     }
 
     /**
@@ -22,7 +24,9 @@ class UpdateSongRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'url' => 'required|max:255|url',
+            'artist_id' => 'required|exists:artists,id',
         ];
     }
 }

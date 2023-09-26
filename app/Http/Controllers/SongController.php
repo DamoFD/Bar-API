@@ -61,7 +61,13 @@ class SongController extends Controller
      */
     public function update(UpdateSongRequest $request, Song $song)
     {
-        //
+        $song->update([
+            'name' => $request->input('name'),
+            'url' => $request->input('url'),
+            'artist_id' => (int)$request->input('artist_id'),
+        ]);
+
+        return new SongResource($song);
     }
 
     /**
