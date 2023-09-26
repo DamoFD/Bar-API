@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 class SongController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display All Songs
      */
     public function index(): AnonymousResourceCollection
     {
@@ -20,15 +20,7 @@ class SongController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store Song
      */
     public function store(StoreSongRequest $request): SongResource
     {
@@ -43,7 +35,7 @@ class SongController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display single Song
      */
     public function show(Song $song): SongResource
     {
@@ -51,15 +43,7 @@ class SongController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Song $song)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update Song
      */
     public function update(UpdateSongRequest $request, Song $song): SongResource
     {
@@ -73,7 +57,7 @@ class SongController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete Song
      */
     public function destroy(Song $song): Response
     {

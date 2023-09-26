@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 class BarController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display All Bars
      */
     public function index(): AnonymousResourceCollection
     {
@@ -20,15 +20,7 @@ class BarController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store Bar
      */
     public function store(StoreBarRequest $request): BarResource
     {
@@ -42,7 +34,7 @@ class BarController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display Single Bar
      */
     public function show(Bar $bar): BarResource
     {
@@ -50,15 +42,7 @@ class BarController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Bar $bar)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update Bar
      */
     public function update(UpdateBarRequest $request, Bar $bar): BarResource
     {
@@ -71,7 +55,7 @@ class BarController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete Bar
      */
     public function destroy(Bar $bar): Response
     {
