@@ -72,6 +72,8 @@ class ArtistController extends Controller
      */
     public function destroy(artist $artist)
     {
-        //
+        $this->authorize('delete', $artist);
+        $artist->delete();
+        return response(null, 204);
     }
 }
