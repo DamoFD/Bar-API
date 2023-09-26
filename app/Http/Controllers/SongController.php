@@ -44,7 +44,7 @@ class SongController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Song $song)
+    public function show(Song $song): SongResource
     {
         return new SongResource($song);
     }

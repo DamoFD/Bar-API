@@ -37,9 +37,9 @@ class BarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Bar $bar)
+    public function show(Bar $bar): BarResource
     {
-        //
+        return new BarResource($bar);
     }
 
     /**
