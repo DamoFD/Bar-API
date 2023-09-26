@@ -277,7 +277,9 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
 ### Fetch Single Artist Example
     import requests
 
-    url = 'https://barapi.cloud/api/v1/artists/1'
+    artist_id = 1
+
+    url = 'https://barapi.cloud/api/v1/artists/{artist_id}'
 
     headers = {
         'Authorization': f'Bearer ACCESS_TOKEN',
@@ -335,46 +337,63 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
         'name': 'John Doe'
     }
 
-    response = requests.get(url, headers=headers, json=payload)
+    response = requests.post(url, headers=headers, json=payload)
 
     print(response.json())
 
-### Request
-
-`POST /thing/`
-
-    curl -i -H 'Accept: application/json' -d 'name=Bar&junk=rubbish' http://localhost:7000/thing
-
-### Response
-
-    HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:31 GMT
-    Status: 201 Created
-    Connection: close
-    Content-Type: application/json
-    Location: /thing/2
-    Content-Length: 35
-
-    {"id":2,"name":"Bar","status":null}
-
-## Get list of Things again
+## Update Artist
 
 ### Request
 
-`GET /thing/`
+`PUT /artists/{id}`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/
+    {
+    "request": {
+        "method": "PUT",
+        "endpoint": "/artists/{id}",
+        "body": {
+            "name": "JOHN DOE"
+        }
+    }
 
 ### Response
 
     HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:31 GMT
     Status: 200 OK
-    Connection: close
     Content-Type: application/json
-    Content-Length: 74
 
-    [{"id":1,"name":"Foo","status":"new"},{"id":2,"name":"Bar","status":null}]
+    {
+    "data": {
+            "id": "1", (string)
+            "type": "Artists",
+            "attributes": {
+                "name": "John Doe", (string)
+                "songs": [],
+                "creator_id": "1", (string)
+                "created_at": "2023-09-26T03:41:35.000000Z", (string)(date-time)
+                "updated_at": "2023-09-26T04:10:05.000000Z" (string)(date-time)
+            }
+        }
+    }
+
+### Update Artist Example
+    import requests
+
+    artist_id = 1
+
+    url = 'https://barapi.cloud/api/v1/artists/{artist_id}'
+
+    headers = {
+        'Authorization': f'Bearer ACCESS_TOKEN',
+    }
+
+    payload = {
+        'name': 'John Doe'
+    }
+
+    response = requests.put(url, headers=headers, json=payload)
+
+    print(response.json())
 
 ## Change a Thing's state
 
