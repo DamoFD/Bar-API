@@ -75,6 +75,8 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        $this->authorize('delete', $song);
+        $song->delete();
+        return response(null, 204);
     }
 }

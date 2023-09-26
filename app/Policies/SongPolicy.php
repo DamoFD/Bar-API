@@ -45,7 +45,7 @@ class SongPolicy
      */
     public function delete(User $user, Song $song): bool
     {
-        //
+        return $user->id === $song->user_id;
     }
 
     /**
