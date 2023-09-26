@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreartistRequest;
+use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\UpdateartistRequest;
 use App\Models\Artist;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Resources\ArtistResource;
 
 class ArtistController extends Controller
@@ -12,7 +13,7 @@ class ArtistController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
         return ArtistResource::collection(Artist::all());
     }
@@ -28,17 +29,22 @@ class ArtistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreartistRequest $request)
+    public function store(StoreArtistRequest $request)
     {
-        //
+        $artist = Artist::create([
+            'name' => $request->input('name'),
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return new ArtistResource($artist);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(artist $artist)
+    public function show(artist $artist): ArtistResource
     {
-        //
+        return new ArtistResource($artist);
     }
 
     /**
