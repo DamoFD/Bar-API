@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreartistRequest;
 use App\Http\Requests\UpdateartistRequest;
-use App\Models\artist;
+use App\Models\Artist;
+use App\Http\Resources\ArtistResource;
 
 class ArtistController extends Controller
 {
@@ -13,7 +14,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        return ArtistResource::collection(Artist::all());
     }
 
     /**

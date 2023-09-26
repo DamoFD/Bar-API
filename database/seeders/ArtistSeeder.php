@@ -12,6 +12,6 @@ class ArtistSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Artist::factory(5)->create();
     }
 }
