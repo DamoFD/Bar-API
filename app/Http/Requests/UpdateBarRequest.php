@@ -11,7 +11,9 @@ class UpdateBarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $bar = $this->route('bar');
+
+        return auth()->user()->id === $bar->user_id;
     }
 
     /**
@@ -22,7 +24,8 @@ class UpdateBarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|unique:bars|max:255',
+            'content' => 'required|max:2000',
         ];
     }
 }

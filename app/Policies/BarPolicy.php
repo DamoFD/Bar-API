@@ -45,7 +45,7 @@ class BarPolicy
      */
     public function delete(User $user, Bar $bar): bool
     {
-        //
+        return $user->id === $bar->user_id;
     }
 
     /**

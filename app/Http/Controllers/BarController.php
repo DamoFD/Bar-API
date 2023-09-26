@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateBarRequest;
 use App\Models\Bar;
 use App\Http\Resources\BarResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class BarController extends Controller
 {
@@ -59,16 +60,23 @@ class BarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBarRequest $request, Bar $bar)
+    public function update(UpdateBarRequest $request, Bar $bar): BarResource
     {
-        //
+        $bar->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+        ]);
+
+        return new BarResource($bar);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Bar $bar)
+    public function destroy(Bar $bar): Response
     {
-        //
+        $this->authorize('delete', $bar);
+        $bar->delete();
+        return response(null, 204);
     }
 }

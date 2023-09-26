@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateSongRequest;
 use App\Models\Song;
 use App\Http\Resources\SongResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class SongController extends Controller
 {
@@ -60,7 +61,7 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSongRequest $request, Song $song)
+    public function update(UpdateSongRequest $request, Song $song): SongResource
     {
         $song->update([
             'name' => $request->input('name'),
@@ -74,7 +75,7 @@ class SongController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Song $song)
+    public function destroy(Song $song): Response
     {
         $this->authorize('delete', $song);
         $song->delete();
