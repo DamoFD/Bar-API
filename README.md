@@ -1,35 +1,13 @@
-# REST API example application
+# Bar API REST API
 
-This is a bare-bones example of a Sinatra application providing a REST
-API to a DataMapper-backed model.
+This is the documentation for the Bar API.
 
-The entire application is contained within the `app.rb` file.
+## Base URL
+The base URL for the API is:
 
-`config.ru` is a minimal Rack configuration for unicorn.
+`https://barapi.cloud/api/v1/`
 
-`run-tests.sh` runs a simplistic test and generates the API
-documentation below.
-
-It uses `run-curl-tests.rb` which runs each command defined in
-`commands.yml`.
-
-## Install
-
-    bundle install
-
-## Run the app
-
-    unicorn -p 7000
-
-## Run the tests
-
-    ./run-tests.sh
-
-# REST API
-
-The REST API to the example app is described below.
-
-## Get list of Things
+## Get Your User Information
 
 ### Request
 
