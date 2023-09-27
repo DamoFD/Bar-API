@@ -86,7 +86,7 @@ If you need an `AccessToken`, visit the [OAuth](/Bar-API/OAuth) section
     <tr>
       <td>songs</td>
       <td>array</td>
-      <td>array of songs by the artist</td>
+      <td>array of <a href="/Bar-API/Songs">songs</a> by the artist</td>
     </tr>
     <tr>
       <td>creator_id</td>
@@ -167,10 +167,10 @@ If you need an `AccessToken`, visit the [OAuth](/Bar-API/OAuth) section
 
 ## Fetch Single Artist
 
-### Fetch All Artists Request
-`GET /artists`
+### Fetch Single Artist Request
+`GET /artists/{id}`
 
-### Fetch All Artists Response
+### Fetch Single Artist Response
 
 <table>
   <thead>
@@ -183,8 +183,8 @@ If you need an `AccessToken`, visit the [OAuth](/Bar-API/OAuth) section
   <tbody>
     <tr>
       <td>data</td>
-      <td>array</td>
-      <td>array of artists</td>
+      <td>object</td>
+      <td>contains artist object</td>
     </tr>
     <tr>
       <td>id</td>
@@ -209,7 +209,7 @@ If you need an `AccessToken`, visit the [OAuth](/Bar-API/OAuth) section
     <tr>
       <td>songs</td>
       <td>array</td>
-      <td>array of songs by the artist</td>
+      <td>array of <a href="/Bar-API/Songs">songs</a> by the artist</td>
     </tr>
     <tr>
       <td>creator_id</td>
@@ -235,8 +235,7 @@ If you need an `AccessToken`, visit the [OAuth](/Bar-API/OAuth) section
     Content-Type: application/json
 
     {
-    "data": [
-        {
+    "data": {
             "id": "1",
             "type": "Artists",
             "attributes": {
@@ -246,38 +245,17 @@ If you need an `AccessToken`, visit the [OAuth](/Bar-API/OAuth) section
                 "created_at": "2023-09-26T03:41:35.000000Z",
                 "updated_at": "2023-09-26T04:10:05.000000Z"
             }
-        },
-        {
-            "id": "2",
-            "type": "Artists",
-            "attributes": {
-                "name": "Erwin Cartwright",
-                "songs": [],
-                "creator_id": "1",
-                "created_at": "2023-09-26T03:41:35.000000Z",
-                "updated_at": "2023-09-26T03:41:35.000000Z"
-            }
-        },
-        {
-            "id": "4",
-            "type": "Artists",
-            "attributes": {
-                "name": "Vernice Brekke",
-                "songs": [],
-                "creator_id": "1",
-                "created_at": "2023-09-26T03:41:35.000000Z",
-                "updated_at": "2023-09-26T03:41:35.000000Z"
-            }
         }
-    ]
     }
 {% endhighlight %}
 
-### Fetch All Artists Example
+### Fetch Single Artist Example
 {% highlight js %}
     import requests
 
-    url = 'https://barapi.cloud/api/v1/artists'
+    artist_id = 1
+
+    url = 'https://barapi.cloud/api/v1/artists/{artist_id}'
 
     headers = {
         'Authorization': f'Bearer ACCESS_TOKEN',
