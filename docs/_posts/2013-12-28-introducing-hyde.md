@@ -10,10 +10,10 @@ Bar API is a Restful API with OAuth functionality that allows users to share mus
 v1.0.0
 
 * [OAuth](OAuth)
-    * [Access Token](OAuth#access-token)
-* [Artists](artists)
-    * [Fetch All Artists](artists#artist-index)
-    * [Fetch Single Artist](artists#artist-show)
+    * [Token Exchange Example](OAuth#token-exchange-example)
+* [Artists](Artists)
+    * [Fetch All Artists](Artists#artist-index)
+    * [Fetch Single Artist](Artists#artist-show)
     * [Create Artist](artists#artist-create)
     * [Update Artist](artists#artist-update)
     * [Delete Artist](artists#artist-delete)
