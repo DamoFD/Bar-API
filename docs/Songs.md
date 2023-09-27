@@ -445,7 +445,7 @@ print(response.json())
 
 ## Update Song
 
-### Update Artist Request
+### Update Song Request
 `PUT /songs/{id}`
 
 <table>
@@ -621,7 +621,7 @@ import requests
 
 song_id = 1
 
-url = 'https://barapi.cloud/api/v1/artists/{song_id}'
+url = 'https://barapi.cloud/api/v1/songs/{song_id}'
 
 headers = {
     'Authorization': f'Bearer ACCESS_TOKEN',
