@@ -352,7 +352,7 @@ All requests require the `Authorization` header with your `Bearer ACCESS_TOKEN`
         "method": "PUT",
         "endpoint": "/artists/{id}",
         "body": {
-            "name": "JOHN DOE"
+            "name": "John Doe"
         }
     }
 
