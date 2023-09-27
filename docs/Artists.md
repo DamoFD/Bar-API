@@ -359,7 +359,7 @@ print(response.json())
 
 {% highlight js %}
 HTTP/1.1 201 Created
-Status: 200 Created
+Status: 201 Created
 Content-Type: application/json
 
 {

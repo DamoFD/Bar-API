@@ -288,8 +288,8 @@ print(response.json())
 
 ## Create Song
 
-### Create Artist Request
-`POST /artists`
+### Create Song Request
+`POST /songs`
 
 <table>
   <thead>
@@ -303,7 +303,17 @@ print(response.json())
     <tr>
       <td>name</td>
       <td>string</td>
-      <td>name of the artist</td>
+      <td>name of the song</td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>string</td>
+      <td>url to find the song</td>
+    </tr>
+    <tr>
+      <td>artist_id</td>
+      <td>string</td>
+      <td>id of the artist</td>
     </tr>
   </tbody>
 </table>
@@ -312,13 +322,16 @@ print(response.json())
 {
 "request": {
     "method": "POST",
-    "endpoint": "/artists",
-    "body": {
-        "name": "John Doe"
-    }
+    "endpoint": "/songs",
+    "body": {[
+        "name": "John Doe",
+        "url": "https://youtube.com",
+        "artist_id": "1"
+    ]}
 }
 {% endhighlight %}
-### Create Artist Response
+
+### Create Song Response
 
 <table>
   <thead>
@@ -332,12 +345,12 @@ print(response.json())
     <tr>
       <td>data</td>
       <td>object</td>
-      <td>contains artist object</td>
+      <td>song object</td>
     </tr>
     <tr>
       <td>id</td>
       <td>string</td>
-      <td>artist identifier</td>
+      <td>song identifier</td>
     </tr>
     <tr>
       <td>type</td>
@@ -347,79 +360,93 @@ print(response.json())
     <tr>
       <td>attributes</td>
       <td>object</td>
-      <td>properties of the artist</td>
+      <td>properties of the song</td>
     </tr>
     <tr>
       <td>name</td>
       <td>string</td>
-      <td>name of the artist</td>
+      <td>name of the song</td>
     </tr>
     <tr>
-      <td>songs</td>
-      <td>array</td>
-      <td>array of <a href="/Bar-API/Songs">songs</a> by the artist</td>
+      <td>url</td>
+      <td>string</td>
+      <td>url of where to find the song</td>
+    </tr>
+    <tr>
+      <td>artist</td>
+      <td>object</td>
+      <td>the  <a href="/Bar-API/Artists">artists</a> object for the song</td>
     </tr>
     <tr>
       <td>creator_id</td>
       <td>string</td>
-      <td>user_id that created the artist</td>
+      <td>user_id that created the song</td>
     </tr>
     <tr>
       <td>created_at</td>
       <td>date-time</td>
-      <td>timestamp of artist creation</td>
+      <td>timestamp of song creation</td>
     </tr>
     <tr>
       <td>updated_at</td>
       <td>date-time</td>
-      <td>timestamp of last artist update</td>
+      <td>timestamp of last song update</td>
     </tr>
   </tbody>
 </table>
 
 {% highlight js %}
 HTTP/1.1 201 Created
-Status: 200 Created
+Status: 201 Created
 Content-Type: application/json
 
 {
-"data": {
+    "data": {
         "id": "1",
-        "type": "Artists",
+        "type": "Songs",
         "attributes": {
-            "name": "John Doe",
-            "songs": [],
+            "name": "Khalil Marquardt",
+            "url": "http://www.gusikowski.org/molestiae-ex-quo-nobis-quis-eaque-ipsum",
+            "artist": {
+                "id": "2",
+                "name": "prime",
+                "creator_id": "1",
+                "created_at": "2023-09-26T04:25:36.000000Z",
+                "updated_at": "2023-09-26T04:25:36.000000Z"
+            },
             "creator_id": "1",
-            "created_at": "2023-09-26T03:41:35.000000Z",
-            "updated_at": "2023-09-26T04:10:05.000000Z"
+            "created_at": "2023-09-26T04:25:36.000000Z",
+            "updated_at": "2023-09-26T04:25:36.000000Z"
         }
     }
 }
 {% endhighlight %}
 
-### Create Artist Example
+### Create Song Example
 {% highlight js %}
 import requests
 
-url = 'https://barapi.cloud/api/v1/artists'
+url = 'https://barapi.cloud/api/v1/songs'
 
 headers = {
     'Authorization': f'Bearer ACCESS_TOKEN',
 }
 
-payload = {
-    'name': 'John Doe'
-}
+payload = {[
+    'name': 'John Doe',
+    'url': 'https://youtube.com',
+    'artist_id': '1'
+]}
 
 response = requests.post(url, headers=headers, json=payload)
 
 print(response.json())
 {% endhighlight %}
 
-## Update Artist
+## Update Song
 
 ### Update Artist Request
-`PUT /artists/{id}`
+`PUT /songs/{id}`
 
 <table>
   <thead>
@@ -433,7 +460,17 @@ print(response.json())
     <tr>
       <td>name</td>
       <td>string</td>
-      <td>name of the artist</td>
+      <td>name of the song</td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>string</td>
+      <td>url to find the song</td>
+    </tr>
+    <tr>
+      <td>artist_id</td>
+      <td>string</td>
+      <td>id of the artist</td>
     </tr>
   </tbody>
 </table>
@@ -442,13 +479,16 @@ print(response.json())
 {
 "request": {
     "method": "PUT",
-    "endpoint": "/artists/{id}",
-    "body": {
-        "name": "John Doe"
-    }
+    "endpoint": "/songs/{id}",
+    "body": {[
+        "name": "John Doe",
+        "url": "https://youtube.com",
+        "artist_id": "1"
+    ]}
 }
 {% endhighlight %}
-### Update Artist Response
+
+### Update Song Response
 
 <table>
   <thead>
@@ -462,12 +502,12 @@ print(response.json())
     <tr>
       <td>data</td>
       <td>object</td>
-      <td>contains artist object</td>
+      <td>song object</td>
     </tr>
     <tr>
       <td>id</td>
       <td>string</td>
-      <td>artist identifier</td>
+      <td>song identifier</td>
     </tr>
     <tr>
       <td>type</td>
@@ -477,32 +517,37 @@ print(response.json())
     <tr>
       <td>attributes</td>
       <td>object</td>
-      <td>properties of the artist</td>
+      <td>properties of the song</td>
     </tr>
     <tr>
       <td>name</td>
       <td>string</td>
-      <td>name of the artist</td>
+      <td>name of the song</td>
     </tr>
     <tr>
-      <td>songs</td>
-      <td>array</td>
-      <td>array of <a href="/Bar-API/Songs">songs</a> by the artist</td>
+      <td>url</td>
+      <td>string</td>
+      <td>url of where to find the song</td>
+    </tr>
+    <tr>
+      <td>artist</td>
+      <td>object</td>
+      <td>the  <a href="/Bar-API/Artists">artists</a> object for the song</td>
     </tr>
     <tr>
       <td>creator_id</td>
       <td>string</td>
-      <td>user_id that created the artist</td>
+      <td>user_id that created the song</td>
     </tr>
     <tr>
       <td>created_at</td>
       <td>date-time</td>
-      <td>timestamp of artist creation</td>
+      <td>timestamp of song creation</td>
     </tr>
     <tr>
       <td>updated_at</td>
       <td>date-time</td>
-      <td>timestamp of last artist update</td>
+      <td>timestamp of last song update</td>
     </tr>
   </tbody>
 </table>
@@ -513,47 +558,56 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-"data": {
+    "data": {
         "id": "1",
-        "type": "Artists",
+        "type": "Songs",
         "attributes": {
-            "name": "John Doe",
-            "songs": [],
+            "name": "Khalil Marquardt",
+            "url": "http://www.gusikowski.org/molestiae-ex-quo-nobis-quis-eaque-ipsum",
+            "artist": {
+                "id": "2",
+                "name": "prime",
+                "creator_id": "1",
+                "created_at": "2023-09-26T04:25:36.000000Z",
+                "updated_at": "2023-09-26T04:25:36.000000Z"
+            },
             "creator_id": "1",
-            "created_at": "2023-09-26T03:41:35.000000Z",
-            "updated_at": "2023-09-26T04:10:05.000000Z"
+            "created_at": "2023-09-26T04:25:36.000000Z",
+            "updated_at": "2023-09-26T04:25:36.000000Z"
         }
     }
 }
 {% endhighlight %}
 
-### Update Artist Example
+### Update Song Example
 {% highlight js %}
 import requests
 
-artist_id = 1
+song_id = 1
 
-url = 'https://barapi.cloud/api/v1/artists/{artist_id}'
+url = 'https://barapi.cloud/api/v1/songs/{song_id}'
 
 headers = {
     'Authorization': f'Bearer ACCESS_TOKEN',
 }
 
-payload = {
-    'name': 'John Doe'
-}
+payload = {[
+    'name': 'John Doe',
+    'url': 'https://youtube.com',
+    'artist_id': '1'
+]}
 
 response = requests.put(url, headers=headers, json=payload)
 
 print(response.json())
 {% endhighlight %}
 
-## Delete Artist
+## Delete Song
 
-### Delete Artist Request
-`DELETE /artists/{id}`
+### Delete Song Request
+`DELETE /songs/{id}`
 
-### Delete Artist Response
+### Delete Song Response
 
 {% highlight js %}
 HTTP/1.1 204 No Content
@@ -561,13 +615,13 @@ Status: 204 No Content
 Content-Type: application/json
 {% endhighlight %}
 
-### Delete Artist Example
+### Delete Song Example
 {% highlight js %}
 import requests
 
-artist_id = 1
+song_id = 1
 
-url = 'https://barapi.cloud/api/v1/artists/{artist_id}'
+url = 'https://barapi.cloud/api/v1/artists/{song_id}'
 
 headers = {
     'Authorization': f'Bearer ACCESS_TOKEN',
